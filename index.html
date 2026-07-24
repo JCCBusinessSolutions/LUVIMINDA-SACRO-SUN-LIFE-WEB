@@ -343,27 +343,11 @@
   .badge{text-align:center; width:112px; transition:transform .3s ease;}
   .badge:hover{transform:translateY(-4px);}
   .badge .bicon{
-    position:relative; width:68px; height:68px; border-radius:50%; margin:0 auto 14px;
-    display:flex; align-items:center; justify-content:center; color:#3A2A05;
-    background:
-      radial-gradient(circle at 32% 26%, #FFF6DD 0%, #F6CD6E 18%, #ECAB23 42%, #C98A12 68%, #8A5D0B 100%);
-    box-shadow:
-      0 6px 14px rgba(0,0,0,.45),
-      inset 0 2px 3px rgba(255,255,255,.65),
-      inset 0 -3px 5px rgba(0,0,0,.4);
+    position:relative; width:64px; height:64px; border-radius:50%; border:1px solid var(--gold-light); margin:0 auto 12px;
+    display:flex; align-items:center; justify-content:center; color:var(--gold-light);
     overflow:hidden;
   }
-  .badge .bicon::before{
-    content:""; position:absolute; top:3px; left:3px; right:3px; height:46%; border-radius:50% 50% 40% 40% / 100% 100% 30% 30%;
-    background:linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 100%);
-    pointer-events:none;
-  }
-  .badge .bicon::after{
-    content:""; position:absolute; inset:0; border-radius:50%;
-    border:1px solid rgba(255,246,221,.7); box-shadow:0 0 0 3px rgba(8,30,39,.4);
-    pointer-events:none;
-  }
-  .badge .bicon svg{position:relative; z-index:1; filter:drop-shadow(0 1px 0 rgba(255,255,255,.4));}
+  .badge .bicon svg{position:relative; z-index:1;}
   .badge .bicon img{position:relative; z-index:1; width:100%; height:100%; object-fit:cover; border-radius:50%;}
   .badge span{font-size:10.5px; font-weight:700; letter-spacing:.03em; color:#CFDDE2; text-transform:uppercase; line-height:1.5;}
   .sun-deco{position:absolute; right:-70px; top:50%; transform:translateY(-50%); width:260px; height:260px; opacity:.5;}
@@ -554,8 +538,7 @@
   body[data-layout="2"] .badge .bicon{
     background:var(--paper); box-shadow:none; border:1.5px solid var(--gold);
   }
-  body[data-layout="2"] .badge .bicon::before, body[data-layout="2"] .badge .bicon::after{display:none;}
-  body[data-layout="2"] .badge .bicon svg{color:var(--gold-deep); filter:none;}
+  body[data-layout="2"] .badge .bicon svg{color:var(--gold-deep);}
   body[data-layout="2"] .t-card{border-radius:2px; box-shadow:none;}
   body[data-layout="2"] .stat-inner{border-radius:2px;}
   body[data-layout="2"] section.awards{background:var(--navy-deep);}
