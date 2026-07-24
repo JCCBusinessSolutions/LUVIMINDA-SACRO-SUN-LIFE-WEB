@@ -523,6 +523,13 @@
   body[data-layout="2"] .eyebrow::before{width:14px;}
   body[data-layout="2"] .hero-bg::after{background:linear-gradient(100deg, rgba(8,30,39,.88) 0%, rgba(8,30,39,.5) 45%, rgba(8,30,39,.2) 100%);}
   body[data-layout="2"] .dot-grid{display:none;}
+  /* Mirrored positioning: portrait swaps to the left, copy to the right */
+  body[data-layout="2"] .hero-copy{order:2;}
+  body[data-layout="2"] .hero-portrait{order:1;}
+  /* Who I Am mirrors too: text on the left, photo on the right */
+  body[data-layout="2"] .who-inner{grid-template-columns:1fr 1.15fr;}
+  body[data-layout="2"] .who-photo{order:2;}
+  body[data-layout="2"] .who-text{order:1;}
   body[data-layout="2"] .sun-deco{display:none;}
   body[data-layout="2"] .btn{border-radius:2px; box-shadow:none !important;}
   body[data-layout="2"] .btn-gold{background:var(--gold); color:var(--navy-deep);}
@@ -551,6 +558,22 @@
   body[data-layout="3"] .hero h1{font-size:64px; line-height:1.06; letter-spacing:-.02em;}
   body[data-layout="3"] .eyebrow{font-size:13px; letter-spacing:.24em;}
   body[data-layout="3"] .eyebrow::before{width:34px; height:2px;}
+  /* Stacked, centered composition — headline first, portrait large below, not side-by-side */
+  body[data-layout="3"] .hero-inner{grid-template-columns:1fr; justify-items:center; text-align:center; max-width:760px;}
+  body[data-layout="3"] .hero-copy{order:1; display:flex; flex-direction:column; align-items:center;}
+  body[data-layout="3"] .hero h1{max-width:640px;}
+  body[data-layout="3"] .hero p.lede{margin-left:auto; margin-right:auto;}
+  body[data-layout="3"] .pillars{justify-content:center;}
+  body[data-layout="3"] .hero-ctas{justify-content:center;}
+  body[data-layout="3"] .hero-portrait{order:2; margin-top:36px;}
+  body[data-layout="3"] .portrait-frame{max-width:280px;}
+  /* Who I Am stacks vertically too — photo full-width above, text centered below */
+  body[data-layout="3"] .who-inner{grid-template-columns:1fr; justify-items:center; text-align:center; max-width:640px;}
+  body[data-layout="3"] .who-photo{order:1; width:100%; max-width:460px;}
+  body[data-layout="3"] .who-text{order:2; margin-top:8px;}
+  body[data-layout="3"] .dot-grid{display:none;}
+  body[data-layout="3"] .who p.body{margin-left:auto; margin-right:auto;}
+  body[data-layout="3"] .values{max-width:560px; margin-left:auto; margin-right:auto;}
   body[data-layout="3"] .who h2, body[data-layout="3"] .sec-head h2{font-size:42px; letter-spacing:-.015em;}
   body[data-layout="3"] .apply-full-hero h2{font-size:50px;}
   body[data-layout="3"] section.who, body[data-layout="3"] section.products,
@@ -574,6 +597,13 @@
   @media (max-width:720px){
     body[data-layout="3"] .hero h1{font-size:38px;}
     body[data-layout="3"] .who h2, body[data-layout="3"] .sec-head h2{font-size:28px;}
+  }
+  @media (max-width:720px){
+    /* On phones, always read headline before photo regardless of desktop mirroring */
+    body[data-layout="2"] .hero-copy{order:1;}
+    body[data-layout="2"] .hero-portrait{order:2; margin-top:24px;}
+    body[data-layout="2"] .who-text{order:1;}
+    body[data-layout="2"] .who-photo{order:2; margin-top:24px;}
   }
 </style>
 </head>
@@ -603,7 +633,7 @@
 <section class="hero" id="home">
   <div class="hero-bg" id="heroBgPhoto"></div>
   <div class="hero-inner">
-    <div>
+    <div class="hero-copy">
       <h1 id="heroHeadline">Life is Brighter with<span class="accent" id="heroAccent">Financial Confidence.</span></h1>
       <p class="lede" id="heroLede">Helping you achieve lifetime financial security and live your dreams today and tomorrow.</p>
       <div class="pillars">
@@ -667,7 +697,7 @@
         <div class="who-slide-dots" id="whoSlideDots"></div>
       </div>
     </div>
-    <div>
+    <div class="who-text">
       <span class="eyebrow">Who I Am</span>
       <h2 id="whoHeadline">Committed to Your Financial Journey</h2>
       <p class="body" id="whoBody">I believe that every Filipino deserves the right financial plan to achieve their dreams and secure their future. My mission is to guide you with honest advice, personalized solutions, and unwavering support every step of the way.</p>
