@@ -643,7 +643,7 @@
         <div class="pillar"><div class="picon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-3-8-6.4-8-10.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 8 2.5C20 14.6 16 18 12 21z"/></svg></div>Leave a lasting legacy</div>
       </div>
       <div class="hero-ctas">
-        <a class="btn btn-gold" href="#contact">Book a Free Consultation</a>
+        <a class="btn btn-gold" id="heroCtaBtn" href="#contact">Book a Free Consultation</a>
         <a class="watch" id="heroWatchVideo" href="#" target="_blank" rel="noopener" style="display:none;">
           <div class="play">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -1547,6 +1547,12 @@ function submitLeadForm(event){
         topCta.href = SITE_CONFIG.messengerLink;
         topCta.target = '_blank';
         topCta.rel = 'noopener';
+      }
+      var heroCta = document.getElementById('heroCtaBtn');
+      if(heroCta){
+        heroCta.href = SITE_CONFIG.messengerLink;
+        heroCta.target = '_blank';
+        heroCta.rel = 'noopener';
       }
       var applyMsgrBtn = document.getElementById('applyMessengerBtn');
       if(applyMsgrBtn) applyMsgrBtn.href = SITE_CONFIG.messengerLink;
