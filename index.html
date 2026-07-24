@@ -1160,8 +1160,10 @@ function getVideoEmbedInfo(url){
   var tt = url.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/);
   if(tt && tt[1]) return { platform: 'tiktok', src: 'https://www.tiktok.com/embed/v2/' + tt[1], vertical: true };
 
-  if(/facebook\.com\/.+\/videos\/|facebook\.com\/watch\/?\?v=|fb\.watch\//.test(url)){
-    return { platform: 'facebook', src: 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&show_text=false', vertical: false };
+  var fbReel = /facebook\.com\/(?:[\w.-]+\/)?reel\/\d+|fb\.watch\//.test(url);
+  var fbVideo = /facebook\.com\/.+\/videos\/|facebook\.com\/watch\/?\?v=/.test(url);
+  if(fbReel || fbVideo){
+    return { platform: 'facebook', src: 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&show_text=false', vertical: fbReel };
   }
 
   return null;
