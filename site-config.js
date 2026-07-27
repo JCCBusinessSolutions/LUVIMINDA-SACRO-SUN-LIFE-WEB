@@ -6,4 +6,4 @@
 // 2. Paste that Web App URL below, between the quotes.
 // 3. Save this file. That's it — no other files need editing.
 // ============================================================
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxju3INcMvh9FsBfR1xk4aGnHb8nDFz1Gz5MauzoBvDS-fW_aB62mhLwv22Y5WKcaeH/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSq39C6F0HoEB-Hi0kmt4l86jZlSCTfhYHUi9ekal9pyIGTK_tlWi846DomEY5kaF_/exec';
