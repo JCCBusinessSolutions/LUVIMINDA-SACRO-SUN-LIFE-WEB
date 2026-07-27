@@ -1150,7 +1150,7 @@ function applyStartAutoplay(){
   }, 3000);
 }
 
-// ===== YouTube embed helper =====
+// ===== Video embed helper (YouTube, TikTok, Facebook) =====
 function getVideoEmbedInfo(url){
   if(!url) return null;
 
@@ -1625,6 +1625,24 @@ function submitLeadForm(event){
     }
     setText('advisorName', data.advisorName);
     setText('advisorTagline', data.advisorTagline);
+    if(data.advisorName){
+      document.title = data.advisorName + ' | Financial Advisor';
+      var appTitleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+      if(appTitleMeta) appTitleMeta.setAttribute('content', data.advisorName);
+
+      var manifestLink = document.querySelector('link[rel="manifest"]');
+      if(manifestLink){
+        fetch(manifestLink.href)
+          .then(function(r){ return r.json(); })
+          .then(function(manifest){
+            manifest.name = data.advisorName + ' - Financial Advisor';
+            manifest.short_name = data.advisorName;
+            var blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+            manifestLink.href = URL.createObjectURL(blob);
+          })
+          .catch(function(){ /* non-critical — home screen name just keeps the default */ });
+      }
+    }
     if(Array.isArray(data.advisorTitles) && data.advisorTitles.length){
       var ul = document.getElementById('advisorTitles');
       if(ul){
